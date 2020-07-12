@@ -54,6 +54,7 @@ repositories {
 }
 
 dependencies {
+    implementation project (':internal:common')
     // Image labeling with AutoML model support
     implementation 'com.google.mlkit:image-labeling-custom:17.0.2'
     // Or comment the dependency above and uncomment the dependency below to
