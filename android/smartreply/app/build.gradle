@@ -1,11 +1,10 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 31
     defaultConfig {
-        applicationId "com.google.mlkit.samples.nl.smartreply"
         minSdkVersion 19
         targetSdkVersion 31
         versionCode 1
@@ -30,6 +29,7 @@ android {
 }
 
 dependencies {
+    implementation project (':internal:common')
     implementation project(':internal:chooserx')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
