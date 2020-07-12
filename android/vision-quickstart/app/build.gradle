@@ -1,11 +1,10 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 34
 
     defaultConfig {
-        applicationId "com.google.mlkit.vision.demo"
         minSdkVersion 21
         multiDexEnabled true
         targetSdkVersion 34
