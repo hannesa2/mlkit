@@ -64,6 +64,36 @@ jobs:
 #        with:
 #          name: MLKit-Screenshots
 #          path: android/screenshots/adb
+  buildRelease:
+    name: Build release JDK ${{ matrix.java_version }}
+    runs-on: macOS-latest
+    strategy:
+      matrix:
+        java_version: [1.8]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+        with:
+          fetch-depth: 0
+      - name: Install JDK ${{ matrix.java_version }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java_version }}
+      - name: Install Android SDK
+        uses: malinskiy/action-android/install-sdk@release/0.0.7
+      - name: Decrypt keystore
+        run: cd android && ./signing/decrypt.sh
+        env:
+          CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
+      - name: Build project
+        run: cd android && ./gradlew assembleRelease
+        env:
+          CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
+          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
+          ALIAS_NAME: ${{ secrets.ALIAS_NAME }}
+          ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
+      - name: cleanup keystore
+        run: cd android && ./signing/cleanup.sh
   Check:
     name: Check
     runs-on: ubuntu-latest
