@@ -1,3 +1,5 @@
+import com.github.benmanes.gradle.versions.VersionsPlugin
+
 buildscript {
     ext.kotlin_version = '1.4.0'
     repositories {
@@ -10,14 +12,14 @@ buildscript {
         classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.android.gms:strict-version-matcher-plugin:1.2.1'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.29.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
-plugins {
-    id 'com.github.ben-manes.versions' version '0.29.0'
-}
-
 allprojects {
+    apply plugin: VersionsPlugin
+    
     repositories {
         google()
         jcenter()
