@@ -84,6 +84,7 @@ dependencies {
     implementation project(':translate:translateApp')
     implementation project(':smartreply:smartreplyApp')
     implementation project(':automl:automlApp')
+    implementation project(':digitalink:digitalinkApp')
     implementation project(':langid:langidApp')
     implementation 'com.github.hannesa2:githubAppUpdate:0.6'
 
