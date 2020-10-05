@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Publish apk
+    name: Publish release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,7 +26,7 @@ jobs:
           TAG_VERSION: ${{ github.ref }}
           CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
       - name: Build project
-        run: cd android && ./gradlew clean assembleRelease --stacktrace
+        run: cd android && ./gradlew clean assembleRelease
         env:
           TAG_VERSION: ${{ github.ref }}
           CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
