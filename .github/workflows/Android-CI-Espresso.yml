@@ -19,7 +19,7 @@ jobs:
         with:
           java-version: ${{ matrix.java_version }}
       - name: Install Android SDK
-        uses: malinskiy/action-android/install-sdk@release/0.0.7
+        uses: malinskiy/action-android/install-sdk@release/0.1.0
       - name: Decrypt keystore
         run: cd android && ./signing/decrypt.sh
         env:
@@ -36,14 +36,14 @@ jobs:
       - name: Run tests
         run: cd android && ./gradlew test
 #      - name: Run instrumentation tests
-#        uses: malinskiy/action-android/emulator-run-cmd@release/0.0.7
+#        uses: malinskiy/action-android/emulator-run-cmd@release/0.1.0
 #        with:
 #          cmd: cd android && ./gradlew cAT
 #          api: 28
 #          tag: default
 #          abi: x86
 #      - name: Archive Espresso results
-#        uses: actions/upload-artifact@v2.0.1
+#        uses: actions/upload-artifact@v2.2.0
 #        with:
 #          name: MLKit-Espresso-report
 #          path: android/app/build/reports/androidTests/connected
@@ -54,7 +54,7 @@ jobs:
 #          name: MLKit-logcat
 #          path: android/artifacts/logcat.log
 #      - name: Archive screenshots
-#        uses: actions/upload-artifact@v2.0.1
+#        uses: actions/upload-artifact@v2.2.0
 #        with:
 #          name: MLKit-Screenshots
 #          path: android/screenshots/adb
@@ -74,7 +74,7 @@ jobs:
         with:
           java-version: ${{ matrix.java_version }}
       - name: Install Android SDK
-        uses: malinskiy/action-android/install-sdk@release/0.0.7
+        uses: malinskiy/action-android/install-sdk@release/0.1.0
       - name: Decrypt keystore
         run: cd android && ./signing/decrypt.sh
         env:
@@ -101,11 +101,11 @@ jobs:
         with:
           java-version: 1.8
       - name: Install Android SDK
-        uses: malinskiy/action-android/install-sdk@release/0.0.7
+        uses: malinskiy/action-android/install-sdk@release/0.1.0
       - name: Code checks
         run: cd android && ./gradlew check
       - name: Archive Lint report
-        uses: actions/upload-artifact@v2.0.1
+        uses: actions/upload-artifact@v2.2.0
         if: ${{ always() }}
         with:
           name: MLKit-Lint-report
