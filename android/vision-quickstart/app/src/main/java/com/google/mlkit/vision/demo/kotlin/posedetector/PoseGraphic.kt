@@ -22,8 +22,6 @@ import android.graphics.Paint
 import com.google.mlkit.vision.demo.GraphicOverlay
 import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseLandmark
-import java.lang.Math.max
-import java.lang.Math.min
 import java.util.Locale
 
 /** Draw the detected pose in preview.  */
