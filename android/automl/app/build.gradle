@@ -68,7 +68,7 @@ dependencies {
     // -------------------------------------------------------
 
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.google.guava:guava:27.1-android'
+    implementation 'com.google.guava:guava:30.1-android'
 
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-livedata:2.3.1"
