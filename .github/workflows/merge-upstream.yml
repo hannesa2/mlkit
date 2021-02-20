@@ -1,8 +1,8 @@
 name: Scheduled Merge Remote Action
 on:
   schedule:
-    - cron: '0 10 * * 7'
-    # scheduled for At 10:00 on Sunday
+    - cron: '0 11 * * *'
+    # scheduled for At 11:00
 
 jobs:
   merge-upstream:
