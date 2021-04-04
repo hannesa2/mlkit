@@ -11,7 +11,7 @@ import com.google.mlkit.samples.vision.digitalink.StrokeManager.StatusChangedLis
  *
  * <p>It is updated upon status changes announced by the StrokeManager.
  */
-public class StatusTextView extends TextView implements StatusChangedListener {
+public class StatusTextView extends AppCompatTextView implements StatusChangedListener {
 
   private StrokeManager strokeManager;
 
