@@ -30,7 +30,7 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.ToggleButton
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.google.mlkit.samples.nl.translate.R
 
@@ -62,14 +62,12 @@ class TranslateFragment : Fragment() {
     val downloadedModelsTextView = view.findViewById<TextView>(R.id.downloadedModels)
     val sourceLangSelector = view.findViewById<Spinner>(R.id.sourceLangSelector)
     val targetLangSelector = view.findViewById<Spinner>(R.id.targetLangSelector)
-    val viewModel = ViewModelProviders.of(this).get(
-      TranslateViewModel::class.java
-    )
+    val viewModel by lazy { ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application).create(TranslateViewModel::class.java) }
 
     // Get available language list and set up source and target language spinners
     // with default selections.
     val adapter = ArrayAdapter(
-      context!!,
+      requireContext(),
       android.R.layout.simple_spinner_dropdown_item, viewModel.availableLanguages
     )
     sourceLangSelector.adapter = adapter
@@ -84,7 +82,7 @@ class TranslateFragment : Fragment() {
         id: Long,
       ) {
         setProgressText(targetTextView)
-        viewModel.sourceLang.setValue(adapter.getItem(position))
+          viewModel.sourceLang.value = adapter.getItem(position)
       }
 
       override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -99,7 +97,7 @@ class TranslateFragment : Fragment() {
         id: Long,
       ) {
         setProgressText(targetTextView)
-        viewModel.targetLang.setValue(adapter.getItem(position))
+          viewModel.targetLang.value = adapter.getItem(position)
       }
 
       override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -119,7 +117,7 @@ class TranslateFragment : Fragment() {
     }
 
     // Set up toggle buttons to delete or download remote models locally.
-    sourceSyncButton.setOnCheckedChangeListener { buttonView, isChecked ->
+    sourceSyncButton.setOnCheckedChangeListener { _, isChecked ->
       val language = adapter.getItem(sourceLangSelector.selectedItemPosition)
       if (isChecked) {
         viewModel.downloadLanguage(language!!)
@@ -127,7 +125,7 @@ class TranslateFragment : Fragment() {
         viewModel.deleteLanguage(language!!)
       }
     }
-    targetSyncButton.setOnCheckedChangeListener { buttonView, isChecked ->
+    targetSyncButton.setOnCheckedChangeListener { _, isChecked ->
       val language = adapter.getItem(targetLangSelector.selectedItemPosition)
       if (isChecked) {
         viewModel.downloadLanguage(language!!)
@@ -149,7 +147,7 @@ class TranslateFragment : Fragment() {
       viewLifecycleOwner,
       { resultOrError ->
         if (resultOrError.error != null) {
-          srcTextView.setError(resultOrError.error!!.localizedMessage)
+            srcTextView.error = resultOrError.error!!.localizedMessage
         } else {
           targetTextView.text = resultOrError.result
         }
@@ -160,7 +158,7 @@ class TranslateFragment : Fragment() {
     viewModel.availableModels.observe(
       viewLifecycleOwner,
       { translateRemoteModels ->
-        val output = context!!.getString(
+        val output = requireContext().getString(
           R.string.downloaded_models_label,
           translateRemoteModels
         )
@@ -177,7 +175,7 @@ class TranslateFragment : Fragment() {
   }
 
   private fun setProgressText(tv: TextView) {
-    tv.text = context!!.getString(R.string.translate_progress)
+    tv.text = requireContext().getString(R.string.translate_progress)
   }
 
   companion object {
