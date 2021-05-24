@@ -1,7 +1,9 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.github.dcendents.android-maven'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'maven-publish'
+}
 
 android {
     compileSdkVersion 34
@@ -54,4 +56,14 @@ dependencies {
     // Or comment the dependency above and uncomment the dependency below to
     // use unbundled model that depends on Google Play Services
     // implementation 'com.google.android.gms:play-services-mlkit-language-id:17.0.0'
+}
+
+project.afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+            }
+        }
+    }
 }
