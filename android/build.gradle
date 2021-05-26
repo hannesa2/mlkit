@@ -15,13 +15,13 @@ buildscript {
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.39.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath 'com.google.gms:google-services:4.3.8'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.6.1'
-        classpath "org.jlleitschuh.gradle:ktlint-gradle:10.0.0"
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.7.1'
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:10.1.0"
     }
 }
 
 plugins {
-    id 'com.github.ben-manes.versions' version '0.38.0'
+    id 'com.github.ben-manes.versions' version '0.39.0'
 }
 
 println "Gradle uses Java ${Jvm.current()}"
