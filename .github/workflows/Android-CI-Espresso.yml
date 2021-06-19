@@ -29,38 +29,38 @@ jobs:
         run: ./signing/decrypt.sh
         env:
           CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
-      - name: Build project
-        run: ./gradlew assembleDebug
-        env:
-          CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
-          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
-          ALIAS_NAME: ${{ secrets.ALIAS_NAME }}
-          ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
+#      - name: Build project
+#        run: ./gradlew assembleDebug
+#        env:
+#          CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
+#          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
+#          ALIAS_NAME: ${{ secrets.ALIAS_NAME }}
+#          ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
       - name: Run tests
         run: ./gradlew test
-      #      - name: Run instrumentation tests
-      #        uses: malinskiy/action-android/emulator-run-cmd@release/0.1.2
-      #        with:
-      #          cmd: ./gradlew cAT
-      #          api: 28
-      #          tag: default
-      #          abi: x86
-      #      - name: Archive Espresso results
-      #        uses: actions/upload-artifact@v2.2.0
-      #        with:
-      #          name: MLKit-Espresso-report
-      #          path: app/build/reports/androidTests/connected
-      #      - name: Save logcat output
-      #        uses: actions/upload-artifact@master
-      #        if: failure()
-      #        with:
-      #          name: MLKit-logcat
-      #          path: artifacts/logcat.log
-      #      - name: Archive screenshots
-      #        uses: actions/upload-artifact@v2.2.0
-      #        with:
-      #          name: MLKit-Screenshots
-      #          path: screenshots/adb
+            - name: Run instrumentation tests
+              uses: malinskiy/action-android/emulator-run-cmd@release/0.1.2
+              with:
+                cmd: ./gradlew cAT
+                api: 28
+                tag: default
+                abi: x86
+            - name: Archive Espresso results
+              uses: actions/upload-artifact@v2.2.0
+              with:
+                name: MLKit-Espresso-report
+                path: app/build/reports/androidTests/connected
+            - name: Save logcat output
+              uses: actions/upload-artifact@master
+              if: failure()
+              with:
+                name: MLKit-logcat
+                path: artifacts/logcat.log
+            - name: Archive screenshots
+              uses: actions/upload-artifact@v2.2.0
+              with:
+                name: MLKit-Screenshots
+                path: screenshots/adb
       - name: cleanup keystore
         run: ./signing/cleanup.sh
   buildRelease:
