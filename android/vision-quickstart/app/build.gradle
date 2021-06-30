@@ -61,7 +61,7 @@ dependencies {
     implementation 'com.google.mlkit:object-detection:16.2.5'
 
     // Object detection feature with custom classifier support
-    implementation 'com.google.mlkit:object-detection-custom:16.3.2'
+    implementation 'com.google.mlkit:object-detection-custom:16.3.3'
 
     // Face features
     implementation 'com.google.mlkit:face-detection:16.1.1'
