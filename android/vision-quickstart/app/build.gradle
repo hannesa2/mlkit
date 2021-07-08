@@ -106,14 +106,14 @@ dependencies {
     // For how to setup gradle dependencies in Android X, see:
     // https://developer.android.com/training/testing/set-up-project#gradle-dependencies
     // Core library
-    androidTestImplementation 'androidx.test:core:1.3.0'
+    androidTestImplementation 'androidx.test:core:1.4.0'
 
     // AndroidJUnitRunner and JUnit Rules
-    androidTestImplementation 'androidx.test:runner:1.3.0'
-    androidTestImplementation 'androidx.test:rules:1.3.0'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test:rules:1.4.0'
 
     // Assertions
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
 
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
