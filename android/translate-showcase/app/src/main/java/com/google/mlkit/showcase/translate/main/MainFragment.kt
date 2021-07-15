@@ -25,6 +25,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.SurfaceHolder
+import android.view.SurfaceHolder.Callback
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -43,7 +44,7 @@ import com.google.mlkit.showcase.translate.R
 import com.google.mlkit.showcase.translate.analyzer.TextAnalyzer
 import com.google.mlkit.showcase.translate.util.Language
 import com.google.mlkit.showcase.translate.util.ScopedExecutor
-import kotlinx.android.synthetic.main.main_fragment.*
+import kotlinx.android.synthetic.main.main_translateshowcase_fragment.*
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -91,7 +92,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        return inflater.inflate(R.layout.main_translateshowcase_fragment, container, false)
     }
 
     override fun onDestroyView() {
@@ -172,25 +173,17 @@ class MainFragment : Fragment() {
         overlay.apply {
             setZOrderOnTop(true)
             holder.setFormat(PixelFormat.TRANSPARENT)
-            holder.addCallback(object : SurfaceHolder.Callback {
-                override fun surfaceChanged(
-                    holder: SurfaceHolder,
-                    format: Int,
-                    width: Int,
-                    height: Int
-                ) {
-                }
+            holder.addCallback(object : Callback {
+                override fun surfaceChanged(holder: SurfaceHolder, p1: Int, p2: Int, p3: Int) = Unit
 
-                override fun surfaceDestroyed(holder: SurfaceHolder) {}
+                override fun surfaceDestroyed(holder: SurfaceHolder) = Unit
 
                 override fun surfaceCreated(holder: SurfaceHolder) {
-                    holder?.let {
-                        drawOverlay(
-                            it,
+                    drawOverlay(
+                            holder,
                             DESIRED_HEIGHT_CROP_PERCENT,
                             DESIRED_WIDTH_CROP_PERCENT
-                        )
-                    }
+                    )
                 }
             })
         }
