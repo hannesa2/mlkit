@@ -39,13 +39,11 @@ dependencies {
     implementation project(':internal:chooserx')
     implementation project(":internal:lintchecks")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'com.google.mlkit:translate:17.0.3'
 
     // Those dependencies are not required by the SDK. They are used for the sample itself.
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.media:media:1.4.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
