@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.google.mlkit.samples.nl.smartreply">
 
     <application
@@ -15,15 +16,15 @@
         android:name="com.google.mlkit.vision.DEPENDENCIES"
         android:value="smart_reply"/>
 
-    <activity android:name="com.google.mlkit.samples.smartreply.java.MainActivity"
+    <activity android:name=".java.MainActivityJava"
             android:theme="@style/MaterialAppTheme" >
         </activity>
 
-        <activity android:name="com.google.mlkit.samples.smartreply.kotlin.MainActivity"
+        <activity android:name=".kotlin.MainActivityKotlin"
             android:theme="@style/MaterialAppTheme" >
         </activity>
 
-        <activity android:name="com.google.mlkit.samples.smartreply.EntryChoiceActivity"
+        <activity android:name=".EntryChoiceActivity"
             android:theme="@style/MaterialAppTheme" >
         </activity>
     </application>
