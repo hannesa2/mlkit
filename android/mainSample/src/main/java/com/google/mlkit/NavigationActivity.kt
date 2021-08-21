@@ -58,11 +58,11 @@ abstract class NavigationActivity : AppCompatActivity(), NavigationView.OnNaviga
         } else if (id == R.id.nav_translate) {
             openActivity(com.google.mlkit.samples.nl.translate.EntryChoiceActivity::class.java)
         } else if (id == R.id.nav_smart_replay) {
-            openActivity(com.google.mlkit.samples.smartreply.EntryChoiceActivity::class.java)
+            openActivity(com.google.mlkit.samples.nl.smartreply.EntryChoiceActivity::class.java)
         } else if (id == R.id.nav_entityextraction) {
             openActivity(com.google.mlkit.samples.nl.entityextraction.kotlin.MainActivityKotlin::class.java)
         } else if (id == R.id.nav_langid) {
-            openActivity(com.google.mlkit.samples.languageid.EntryChoiceActivity::class.java)
+            openActivity(com.google.mlkit.samples.nl.languageid.EntryChoiceActivity::class.java)
         } else if (id == R.id.nav_auto_ml) {
             openActivity(ChooserActivity::class.java)
         } else if (id == R.id.nav_digital_ink) {
