@@ -34,7 +34,7 @@ allprojects {
 
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         mavenLocal()
         maven { url 'https://jitpack.io' }
         // Depending on AndroidX Snapshot Builds to get the latest CameraX libs.
