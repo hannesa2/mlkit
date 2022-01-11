@@ -18,6 +18,10 @@ android {
         setProperty("archivesBaseName", "nl-entity-extraction")
     }
 
+    lintOptions {
+        disable "Instantiatable"
+    }
+
     buildTypes {
         proguard {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard.cfg'
