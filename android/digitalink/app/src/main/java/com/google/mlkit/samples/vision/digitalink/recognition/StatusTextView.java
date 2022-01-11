@@ -4,6 +4,8 @@ import android.content.Context;
 import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
+
 import com.google.mlkit.samples.vision.digitalink.recognition.StrokeManager.StatusChangedListener;
 
 /**

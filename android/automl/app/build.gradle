@@ -38,10 +38,6 @@ android {
     aaptOptions {
         noCompress "tflite"
     }
-
-    dexOptions {
-        javaMaxHeapSize "4g"
-    }
 }
 
 repositories {

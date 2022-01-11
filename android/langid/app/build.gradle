@@ -8,7 +8,6 @@ plugins {
 android {
     compileSdkVersion 34
     defaultConfig {
-        applicationId "com.google.mlkit.samples.nl.languageid"
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
@@ -17,9 +16,6 @@ android {
     }
     buildTypes {
         proguard {
-            debuggable false
-            minifyEnabled true
-            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard.cfg'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro', 'proguard.cfg'
         }
