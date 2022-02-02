@@ -92,8 +92,8 @@ object PreferenceUtils {
             val pictureSizePrefKey = context.getString(R.string.pref_key_rear_camera_picture_size)
             val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
             CameraSizePair(
-                Size.parseSize(sharedPreferences.getString(previewSizePrefKey, null)),
-                Size.parseSize(sharedPreferences.getString(pictureSizePrefKey, null))
+                Size.parseSize(sharedPreferences.getString(previewSizePrefKey, null)!!),
+                Size.parseSize(sharedPreferences.getString(pictureSizePrefKey, null)!!)
             )
         } catch (e: Exception) {
             null
