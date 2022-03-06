@@ -45,7 +45,7 @@ dependencies {
 
     implementation 'com.google.mlkit:smart-reply:17.0.1'
 
-    implementation 'com.google.guava:guava:31.0.1-android'
+    implementation 'com.google.guava:guava:31.1-android'
 }
 
 project.afterEvaluate {
