@@ -112,7 +112,7 @@ dependencies {
 
 static def getTag() {
     def tagVersion = "$System.env.TAG_VERSION"
-    if (tagVersion == "null") {
+    if (tagVersion.toString() == "null") {
         println "No variable TAG_VERSION specified, I'm using 'git describe --abbrev=0'"
         def process = "git describe --abbrev=0".execute()
         tagVersion = process.text.toString().trim()
