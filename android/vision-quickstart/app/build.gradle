@@ -73,7 +73,7 @@ dependencies {
     // Or comment the dependency above and uncomment the dependency below to
     // use bundled model.
     // implementation 'com.google.mlkit:text-recognition:16.0.0-beta3'
-    implementation 'com.google.mlkit:text-recognition-chinese:16.0.0-beta3'
+    implementation 'com.google.mlkit:text-recognition-chinese:16.0.0-beta4'
     implementation 'com.google.mlkit:text-recognition-devanagari:16.0.0-beta3'
     implementation 'com.google.mlkit:text-recognition-japanese:16.0.0-beta3'
     implementation 'com.google.mlkit:text-recognition-korean:16.0.0-beta3'
