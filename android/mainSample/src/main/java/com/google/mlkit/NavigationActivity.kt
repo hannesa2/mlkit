@@ -17,7 +17,7 @@ import com.google.mlkit.samples.vision.digitalink.DigitalInkMainActivity
 import com.google.mlkit.vision.automl.demo.ChooserActivity
 import com.google.mlkit.vision.demo.EntryChoiceActivity
 import info.hannes.github.AppUpdateHelper
-import info.hannes.logcat.LogcatActivity
+import info.hannes.logcat.ui.LogcatActivity
 
 abstract class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     override fun onPostCreate(savedInstanceState: Bundle?) {
