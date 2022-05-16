@@ -8,12 +8,12 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "com.google.mlkit.md"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 32
 
         versionCode getGitCommitCount()
         versionName getTag()
