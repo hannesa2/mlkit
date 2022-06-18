@@ -38,23 +38,23 @@ dependencies {
     // ML Kit related dependencies
 
     // Barcode model
-    implementation 'com.google.mlkit:barcode-scanning:16.0.3'
+    implementation 'com.google.mlkit:barcode-scanning:17.0.2'
 
     // Object detection and tracking features
-    implementation 'com.google.mlkit:object-detection:16.2.1'
-    implementation 'com.google.mlkit:object-detection-custom:16.2.1'
+    implementation 'com.google.mlkit:object-detection:17.0.0'
+    implementation 'com.google.mlkit:object-detection-custom:17.0.0'
 
     // Face features
-    implementation 'com.google.android.gms:play-services-mlkit-face-detection:16.1.1'
+    implementation 'com.google.android.gms:play-services-mlkit-face-detection:17.0.1'
 
     // Text features
-    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:16.1.1'
+    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:18.0.0'
 
     // Image labeling
-    implementation 'com.google.mlkit:image-labeling:17.0.0'
+    implementation 'com.google.mlkit:image-labeling:17.0.7'
 
     // Language Identification
-    implementation 'com.google.mlkit:language-id:16.1.1'
+    implementation 'com.google.mlkit:language-id:17.0.3'
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
