@@ -85,7 +85,7 @@ android {
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -94,7 +94,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:21.0.0'
     implementation 'com.google.firebase:firebase-crashlytics:18.2.10'
 
-    implementation 'com.github.AppDevNext.Logcat:LogcatCoreUI:2.10'
+    implementation 'com.github.AppDevNext.Logcat:LogcatCoreUI:2.11.1'
     implementation 'com.github.AppDevNext.Logcat:LogcatCrashlyticLib:2.10'
 
     implementation project(':vision-quickstart:visionQuickstartApp')
