@@ -44,7 +44,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.4.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    implementation 'com.google.mlkit:language-id:17.0.3'
+    implementation 'com.google.mlkit:language-id:17.0.4'
     // Or comment the dependency above and uncomment the dependency below to
     // use unbundled model that depends on Google Play Services
     // implementation 'com.google.android.gms:play-services-mlkit-language-id:17.0.0-beta1'
