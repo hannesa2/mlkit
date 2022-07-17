@@ -95,7 +95,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics:18.2.11'
 
     implementation 'com.github.AppDevNext.Logcat:LogcatCoreUI:2.11.2'
-    implementation 'com.github.AppDevNext.Logcat:LogcatCrashlyticLib:2.11.1'
+    implementation 'com.github.AppDevNext.Logcat:LogcatCrashlyticLib:2.11.2'
 
     implementation project(':vision-quickstart:visionQuickstartApp')
     implementation project(':material-showcase:materialApp')
