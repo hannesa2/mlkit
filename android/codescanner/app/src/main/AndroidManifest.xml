@@ -18,6 +18,7 @@
         android:value="@integer/google_play_services_version" />
 
     <meta-data
+        tools:replace="android:value"
         android:name="com.google.mlkit.vision.DEPENDENCIES"
         android:value="barcode_ui"/>
 
