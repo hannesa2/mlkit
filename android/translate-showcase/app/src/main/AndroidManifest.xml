@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.google.mlkit.showcase.translate">
 
   <uses-permission android:name="android.permission.CAMERA" />
@@ -17,6 +18,7 @@
         </activity>
     <!-- Automatically download the text recognition model after app install. -->
     <meta-data
+        tools:replace="android:value"
         android:name="com.google.mlkit.vision.DEPENDENCIES"
         android:value="ocr" />
   </application>
