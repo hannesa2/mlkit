@@ -122,5 +122,4 @@ jobs:
         with:
           name: MLKit-Lint-report
           path: |
-            ./**/build/reports/lint-results.html
-            ./**/**/build/reports/lint-results.html
+            ./**/build/reports/lint-results-debug.html
