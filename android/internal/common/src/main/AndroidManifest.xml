@@ -1,5 +1,3 @@
-<manifest package="com.google.mlkit.common"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest package="com.google.mlkit.common">
 
-    /
 </manifest>
