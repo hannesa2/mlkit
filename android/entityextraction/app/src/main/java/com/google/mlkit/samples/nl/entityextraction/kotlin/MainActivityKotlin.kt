@@ -58,7 +58,7 @@ class MainActivityKotlin : AppCompatActivity() {
     lifecycle.addObserver(entityExtractor)
 
     currentModelView = findViewById(R.id.current_model)
-    currentModelView.text = getString(R.string.current_model, currentModel.toUpperCase(Locale.US))
+    currentModelView.text = getString(R.string.current_model, currentModel.uppercase(Locale.US))
     val currentLocaleView: TextView = findViewById(R.id.current_locale)
     currentLocaleView.text = getString(R.string.current_locale, Locale.getDefault())
     input = findViewById(R.id.text_input)
@@ -138,7 +138,7 @@ class MainActivityKotlin : AppCompatActivity() {
       if (newModel != null) {
         currentModel = newModel
       }
-      currentModelView.text = getString(R.string.current_model, currentModel.toUpperCase(Locale.US))
+      currentModelView.text = getString(R.string.current_model, currentModel.uppercase(Locale.US))
       entityExtractor =
         EntityExtraction.getClient(EntityExtractorOptions.Builder(currentModel).build())
     }

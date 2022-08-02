@@ -152,7 +152,7 @@ class ModelsActivityKotlin : AppCompatActivity() {
     )
 
     private fun getFormattedListOfDownloadingModels(): String {
-      return downloadingModels.map { it.toUpperCase(Locale.US) }.joinToString { ", " }
+      return downloadingModels.map { it.uppercase(Locale.US) }.joinToString { ", " }
     }
   }
 }
