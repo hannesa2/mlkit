@@ -122,6 +122,7 @@ public class DigitalInkMainActivity extends AppCompatActivity
       return new ModelLanguageContainer(label, null);
     }
 
+    @Nullable
     public String getLanguageTag() {
       return languageTag;
     }
