@@ -106,7 +106,7 @@ dependencies {
     implementation project(':digitalink:digitalinkApp')
     implementation project(':langid:langidApp')
     implementation project(':entityextraction:entityextractionApp')
-    implementation 'com.github.hannesa2:githubAppUpdate:1.4'
+    implementation 'com.github.hannesa2:githubAppUpdate:1.5'
 
     implementation "androidx.core:core-ktx:1.8.0"
 }
