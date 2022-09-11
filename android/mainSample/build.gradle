@@ -91,7 +91,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'com.google.firebase:firebase-analytics:21.1.0'
+    implementation 'com.google.firebase:firebase-analytics:21.1.1'
     implementation 'com.google.firebase:firebase-crashlytics:18.2.13'
 
     implementation 'com.github.AppDevNext.Logcat:LogcatCoreUI:2.11.3'
