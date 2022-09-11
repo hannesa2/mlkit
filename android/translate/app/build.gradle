@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
     defaultConfig {
         // The SDK only requires minSdkVersion 19. We are using minSdkVersion
         // 21 to make some code in the sample shorter.
         minSdkVersion 21
-        targetSdkVersion 32
+        targetSdkVersion 33
         //multiDexEnabled true
         versionCode 1
         versionName "1.0"
