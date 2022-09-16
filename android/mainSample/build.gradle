@@ -77,10 +77,13 @@ android {
             versionNameSuffix ".debug"
         }
     }
-
     packagingOptions {
-        exclude "META-INF/*.kotlin_module"
+        resources {
+            excludes += ['META-INF/*.kotlin_module']
+        }
     }
+
+    namespace 'com.google.mlkit'
 }
 
 dependencies {
