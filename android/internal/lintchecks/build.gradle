@@ -11,6 +11,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 33
     }
+    namespace 'com.mlkit.lintchecks'
 }
 
 dependencies {
