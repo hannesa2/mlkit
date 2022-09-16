@@ -22,6 +22,7 @@ android {
             minifyEnabled false
         }
     }
+    namespace 'com.google.mlkit.common'
 }
 
 dependencies {
