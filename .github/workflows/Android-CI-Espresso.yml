@@ -24,7 +24,7 @@ jobs:
           distribution: "adopt"
           java-version: ${{ matrix.java_version }}
       - name: Install Android SDK
-        uses: malinskiy/action-android/install-sdk@release/0.1.3
+        uses: malinskiy/action-android/install-sdk@release/0.1.4
       - name: Debug keystore
         run: keytool -genkey -v -keystore mainSample/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "C=US, O=Android, CN=Android Debug"
       - name: Build project
@@ -37,7 +37,7 @@ jobs:
       - name: Run tests
         run: ./gradlew test
       #      - name: Run instrumentation tests
-      #        uses: malinskiy/action-android/emulator-run-cmd@release/0.1.3
+      #        uses: malinskiy/action-android/emulator-run-cmd@release/0.1.4
       #        with:
       #          cmd: ./gradlew cAT
       #          api: 28
@@ -81,7 +81,7 @@ jobs:
           distribution: "adopt"
           java-version: ${{ matrix.java_version }}
       - name: Install Android SDK
-        uses: malinskiy/action-android/install-sdk@release/0.1.3
+        uses: malinskiy/action-android/install-sdk@release/0.1.4
       - name: Decrypt keystore
         run: ./signing/decrypt.sh
         env:
@@ -113,7 +113,7 @@ jobs:
           distribution: "adopt"
           java-version: 11
       - name: Install Android SDK
-        uses: malinskiy/action-android/install-sdk@release/0.1.3
+        uses: malinskiy/action-android/install-sdk@release/0.1.4
       - name: Code checks
         run: ./gradlew check
       - name: Archive Lint report
