@@ -70,7 +70,7 @@ dependencies {
     // implementation 'com.google.android.gms:play-services-mlkit-face-detection:17.1.0'
 
     // Text features
-    implementation 'com.google.mlkit:text-recognition:16.0.0-beta5'
+    implementation 'com.google.mlkit:text-recognition:16.0.0-beta6'
     // Or comment the dependency above and uncomment the dependency below to
     // use unbundled model that depends on Google Play Services
     // implementation 'com.google.android.gms:play-services-mlkit-text-recognition:18.0.1'
