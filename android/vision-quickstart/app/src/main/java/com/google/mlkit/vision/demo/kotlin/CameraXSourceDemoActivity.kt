@@ -131,14 +131,14 @@ class CameraXSourceDemoActivity : AppCompatActivity(), CompoundButton.OnCheckedC
         localModel
       )
     val objectDetector: ObjectDetector = ObjectDetection.getClient(customObjectDetectorOptions!!)
-    var detectionTaskCallback: DetectionTaskCallback<List<DetectedObject>> =
+    val detectionTaskCallback: DetectionTaskCallback<List<DetectedObject>> =
       DetectionTaskCallback<List<DetectedObject>> { detectionTask ->
         detectionTask
           .addOnSuccessListener { results -> onDetectionTaskSuccess(results) }
           .addOnFailureListener { e -> onDetectionTaskFailure(e) }
       }
     val builder: CameraSourceConfig.Builder =
-      CameraSourceConfig.Builder(getApplicationContext(), objectDetector!!, detectionTaskCallback)
+      CameraSourceConfig.Builder(getApplicationContext(), objectDetector, detectionTaskCallback)
         .setFacing(lensFacing)
     targetResolution =
       PreferenceUtils.getCameraXTargetResolution(getApplicationContext(), lensFacing)
@@ -196,8 +196,8 @@ class CameraXSourceDemoActivity : AppCompatActivity(), CompoundButton.OnCheckedC
   }
 
   private val isPortraitMode: Boolean
-    private get() =
-      (getApplicationContext().getResources().getConfiguration().orientation !==
+    get() =
+      (applicationContext.getResources().getConfiguration().orientation !==
         Configuration.ORIENTATION_LANDSCAPE)
 
   companion object {
