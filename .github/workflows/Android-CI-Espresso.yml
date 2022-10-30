@@ -5,7 +5,7 @@ on: [ pull_request ]
 jobs:
   buildTest:
     name: Build & Test JDK ${{ matrix.java_version }}
-    runs-on: macOS-latest
+    runs-on: ghcr.io/cirruslabs/macos-ventura-xcode:latest
     defaults:
       run:
         shell: bash
@@ -61,7 +61,7 @@ jobs:
       #          path: screenshots/adb
   buildRelease:
     name: Build release JDK ${{ matrix.java_version }}
-    runs-on: macOS-latest
+    runs-on: ghcr.io/cirruslabs/macos-ventura-xcode:latest
     defaults:
       run:
         shell: bash
