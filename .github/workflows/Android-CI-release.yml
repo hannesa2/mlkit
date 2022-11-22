@@ -37,7 +37,6 @@ jobs:
         run: cd android && ./gradlew clean assembleRelease
         env:
           TAG_VERSION: ${{steps.tagger.outputs.tag}}
-          CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
           KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
           ALIAS_NAME: ${{ secrets.ALIAS_NAME }}
           ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
