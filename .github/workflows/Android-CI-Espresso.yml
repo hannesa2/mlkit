@@ -34,7 +34,6 @@ jobs:
       - name: Build project
         run: ./gradlew assembleDebug
         env:
-          CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
           KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
           ALIAS_NAME: ${{ secrets.ALIAS_NAME }}
           ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
@@ -49,7 +48,6 @@ jobs:
           abi: x86_64
           cmdOptions: -noaudio -no-boot-anim -no-window
         env:
-          CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
           KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
           ALIAS_NAME: ${{ secrets.ALIAS_NAME }}
           ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
@@ -102,7 +100,6 @@ jobs:
       - name: Build project
         run: ./gradlew assembleRelease
         env:
-          CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
           KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
           ALIAS_NAME: ${{ secrets.ALIAS_NAME }}
           ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
