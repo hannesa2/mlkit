@@ -1,7 +1,6 @@
 package com.google.mlkit
 
 import android.os.Bundle
-import android.widget.Toast
 import info.hannes.github.AppUpdateHelper
 
 class MLMainActivity : NavigationActivity() {
@@ -15,8 +14,7 @@ class MLMainActivity : NavigationActivity() {
 
         AppUpdateHelper.checkForNewVersion(
                 this,
-                BuildConfig.GIT_REPOSITORY,
-                { msg -> Toast.makeText(this, msg, Toast.LENGTH_LONG).show() }
+                BuildConfig.GIT_REPOSITORY
         )
     }
 }
