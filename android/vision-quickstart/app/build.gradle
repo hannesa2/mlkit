@@ -131,7 +131,7 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.5.0'
 
     // Assertions
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
 
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
