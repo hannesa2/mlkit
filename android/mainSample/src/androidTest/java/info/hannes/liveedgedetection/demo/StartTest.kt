@@ -1,11 +1,13 @@
 package info.hannes.liveedgedetection.demo
 
+import android.Manifest
 import androidx.test.core.graphics.writeToTestStorage
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.screenshot.captureToBitmap
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.rule.GrantPermissionRule
 import com.google.mlkit.MLMainActivity
 import org.junit.Rule
 import org.junit.Test
@@ -21,6 +23,13 @@ class StartTest {
     // a handy JUnit rule that stores the method name, so it can be used to generate unique screenshot files per test method
     @get:Rule
     var nameRule = TestName()
+
+    @get:Rule
+    val grantPermissionRule: GrantPermissionRule = GrantPermissionRule.grant(
+        Manifest.permission.CAMERA,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.READ_EXTERNAL_STORAGE
+    )
 
     @Test
     fun smokeTestSimplyStart() {
