@@ -7,7 +7,7 @@ plugins {
 android {
     compileSdkVersion 34
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 34
         multiDexEnabled true
         versionCode 1
