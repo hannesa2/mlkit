@@ -43,7 +43,7 @@ import com.google.mlkit.vision.documentscanner.GmsDocumentScanningResult
 import java.io.File
 
 /** Demonstrates the document scanner powered by Google Play services. */
-class MainActivity : AppCompatActivity() {
+class DocumentScannerActivity : AppCompatActivity() {
 
   private lateinit var resultInfo: TextView
   private lateinit var firstPageView: ImageView
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    setContentView(R.layout.activity_documentscanner_main)
     resultInfo = findViewById<TextView>(R.id.result_info)!!
     firstPageView = findViewById<ImageView>(R.id.first_page_view)!!
     pageLimitInputView = findViewById(R.id.page_limit_input)

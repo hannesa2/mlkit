@@ -10,6 +10,9 @@ include ':internal:chooserx'
 include ':langid:langidApp'
 project(':langid:langidApp').projectDir = new File('./langid/app')
 
+include ':documentscanner:documentscannerApp'
+project(':documentscanner:documentscannerApp').projectDir = new File('./documentscanner/app')
+
 include ':codescanner:codescannerApp'
 project(':codescanner:codescannerApp').projectDir = new File('./codescanner/app')
 

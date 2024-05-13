@@ -111,6 +111,7 @@ dependencies {
     implementation 'com.github.AppDevNext.Logcat:LogcatCrashlyticLib:2.12'
 
     implementation project(':codescanner:codescannerApp')
+    implementation project(':documentscanner:documentscannerApp')
     implementation project(':vision-quickstart:visionQuickstartApp')
     implementation project(':material-showcase:materialApp')
     implementation project(':translate-showcase:translateShowCaseApp')
