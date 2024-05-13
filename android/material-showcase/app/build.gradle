@@ -6,6 +6,7 @@ plugins {
 }
 
 android {
+    namespace "com.google.mlkit.md"
     compileSdkVersion 34
     defaultConfig {
         minSdkVersion 21
