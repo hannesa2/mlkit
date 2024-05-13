@@ -109,7 +109,7 @@ dependencies {
     implementation project(':digitalink:digitalinkApp')
     implementation project(':langid:langidApp')
     implementation project(':entityextraction:entityextractionApp')
-    implementation 'com.github.hannesa2:githubAppUpdate:2.0'
+    implementation 'com.github.hannesa2:githubAppUpdate:2.3.1'
 
     implementation "androidx.core:core-ktx:1.9.0"
 }
