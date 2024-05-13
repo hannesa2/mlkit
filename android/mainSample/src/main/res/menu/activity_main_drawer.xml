@@ -9,7 +9,11 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="Material showcase" />
         <item
-            android:id="@+id/nav_vision_documentscanner"
+            android:id="@+id/nav_codescanner"
+            android:icon="@drawable/ic_camera_mixed_processing"
+            android:title="Code Scanner" />
+        <item
+            android:id="@+id/nav_documentscanner"
             android:icon="@drawable/ic_camera_mixed_processing"
             android:title="Document Scanner" />
         <item
