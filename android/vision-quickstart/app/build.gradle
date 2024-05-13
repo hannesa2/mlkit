@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+    namespace "com.google.mlkit.vision.demo"
     compileSdkVersion 34
 
     defaultConfig {

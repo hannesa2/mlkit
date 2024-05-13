@@ -82,7 +82,10 @@ android {
             excludes += ['META-INF/*.kotlin_module']
         }
     }
-
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
     namespace 'com.google.mlkit'
 }
 

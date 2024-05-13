@@ -18,11 +18,11 @@ dependencies {
     lintChecks project(":internal:lint")
 }
 
-project.afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
+publishing {
+    publications {
+        release(MavenPublication) {
+            afterEvaluate {
+                from components.findByName('release')
             }
         }
     }

@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace "com.google.mlkit.vision.automl.demo"
     compileSdkVersion 34
 
     defaultConfig {
@@ -82,11 +83,11 @@ configurations {
     all*.exclude group: 'com.google.guava', module: 'listenablefuture'
 }
 
-project.afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
+publishing {
+    publications {
+        release(MavenPublication) {
+            afterEvaluate {
+                from components.findByName('release')
             }
         }
     }

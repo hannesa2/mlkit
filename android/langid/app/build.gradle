@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+    namespace "com.google.mlkit.samples.nl.languageid"
     compileSdkVersion 34
     defaultConfig {
         minSdkVersion 21
