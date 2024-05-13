@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+    namespace "com.google.mlkit.samples.vision.digitalink"
     compileSdkVersion 34
     defaultConfig {
         minSdkVersion 21

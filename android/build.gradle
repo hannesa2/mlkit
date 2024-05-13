@@ -2,13 +2,13 @@ import com.github.benmanes.gradle.versions.VersionsPlugin
 import org.gradle.internal.jvm.Jvm
 
 buildscript {
-    ext.kotlin_version = '1.8.20'
+    ext.kotlin_version = '1.9.23'
     repositories {
         google()
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.android.tools.build:gradle:8.4.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.android.gms:strict-version-matcher-plugin:1.2.4'
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.46.0'
