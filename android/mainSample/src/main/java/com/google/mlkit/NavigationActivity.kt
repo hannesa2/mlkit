@@ -13,7 +13,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.mlkit.md.MainActivity
-import com.google.mlkit.samples.codescanner.kotlin.DocumentScannerActivity
+import com.google.mlkit.samples.codescanner.kotlin.CodeScannerActivity
 import com.google.mlkit.samples.vision.digitalink.kotlin.DigitalInkMainActivity
 import com.google.mlkit.vision.automl.demo.ChooserActivity
 import com.google.mlkit.vision.demo.EntryChoiceActivity
@@ -53,7 +53,7 @@ abstract class NavigationActivity : AppCompatActivity(), NavigationView.OnNaviga
         if (id == R.id.nav_material_showcase) {
             openActivity(MainActivity::class.java)
         } else if (id == R.id.nav_vision_documentscanner) {
-            openActivity(DocumentScannerActivity::class.java)
+            openActivity(CodeScannerActivity::class.java)
         } else if (id == R.id.nav_vision_quickstart) {
             openActivity(EntryChoiceActivity::class.java)
         } else if (id == R.id.nav_translate_showcase) {
