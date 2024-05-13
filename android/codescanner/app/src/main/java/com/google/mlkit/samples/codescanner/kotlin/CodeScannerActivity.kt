@@ -29,7 +29,7 @@ import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 import java.util.Locale
 
 /** Demonstrates the code scanner powered by Google Play Services. */
-class DocumentScannerActivity : AppCompatActivity() {
+class CodeScannerActivity : AppCompatActivity() {
 
   private var allowManualInput = false
   private var enableAutoZoom = false
@@ -37,7 +37,7 @@ class DocumentScannerActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_documentscanner_main)
+    setContentView(R.layout.activity_codescanner_main)
     barcodeResultView = findViewById(R.id.barcode_result_view)
   }
 
