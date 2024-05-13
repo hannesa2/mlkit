@@ -13,7 +13,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.mlkit.md.MainActivity
-import com.google.mlkit.samples.vision.digitalink.DigitalInkMainActivity
+import com.google.mlkit.samples.vision.digitalink.kotlin.DigitalInkMainActivity
 import com.google.mlkit.vision.automl.demo.ChooserActivity
 import com.google.mlkit.vision.demo.EntryChoiceActivity
 import info.hannes.github.AppUpdateHelper
