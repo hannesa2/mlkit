@@ -19,12 +19,12 @@ android {
         setProperty("archivesBaseName", "vision-quickstart")
     }
     buildTypes {
-        proguard {
-            debuggable false
-            minifyEnabled true
-            //shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard.cfg'
-        }
+//        proguard {
+//            debuggable false
+//            minifyEnabled true
+//            //shrinkResources true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard.cfg'
+//        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
