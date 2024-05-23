@@ -51,9 +51,9 @@ dependencies {
     implementation 'com.google.mlkit:barcode-scanning:17.0.3'
 
     // Object feature and model
-    implementation 'com.google.mlkit:object-detection:17.0.0'
+    implementation 'com.google.mlkit:object-detection:17.0.1'
     // Custom model
-    implementation 'com.google.mlkit:object-detection-custom:17.0.0'
+    implementation 'com.google.mlkit:object-detection-custom:17.0.1'
 
     api 'com.google.guava:guava:31.1-android'
 }
