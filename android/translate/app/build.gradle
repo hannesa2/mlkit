@@ -48,7 +48,7 @@ dependencies {
     implementation 'com.google.mlkit:translate:17.0.3'
 
     // Those dependencies are not required by the SDK. They are used for the sample itself.
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.media:media:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
