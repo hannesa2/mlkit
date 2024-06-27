@@ -2,7 +2,6 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.google.mlkit.vision.automl.demo"
     android:installLocation="auto">
 
   <!-- CameraX libraries require minSdkVersion 21, while this quickstart app
@@ -23,15 +22,14 @@
   <uses-permission android:name="android.permission.CAMERA"/>
 
   <application
-      android:name="androidx.multidex.MultiDexApplication"
-      android:icon="@drawable/logo_mlkit"
       android:label="@string/app_name"
-      android:theme="@style/Theme.AppCompat">
+      android:theme="@style/MaterialAppTheme">
 
     <meta-data
         android:name="com.google.android.gms.version"
         android:value="@integer/google_play_services_version"/>
     <meta-data
+        tools:replace="android:value"
         android:name="com.google.mlkit.vision.DEPENDENCIES"
         android:value="custom_ica"/>
 
@@ -39,10 +37,6 @@
         android:name=".ChooserActivity"
         android:exported="true"
         android:theme="@style/AppTheme">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
     </activity>
 
     <activity
