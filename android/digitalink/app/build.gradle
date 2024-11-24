@@ -5,10 +5,10 @@ apply plugin: 'maven-publish'
 
 android {
     namespace "com.google.mlkit.samples.vision.digitalink.recognition"
-    compileSdkVersion 34
+    compileSdkVersion 35
     defaultConfig {
         minSdkVersion 23
-        targetSdkVersion 34
+        targetSdkVersion 35
         multiDexEnabled true
         versionCode 1
         versionName "1.0"

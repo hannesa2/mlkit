@@ -7,10 +7,10 @@ plugins {
 
 android {
     namespace "com.google.mlkit.md"
-    compileSdkVersion 34
+    compileSdkVersion 35
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
