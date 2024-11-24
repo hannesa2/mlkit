@@ -6,10 +6,10 @@ plugins {
 
 android {
     namespace "com.google.mlkit.samples.vision.digitalink"
-    compileSdkVersion 34
+    compileSdkVersion 35
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 34
+        targetSdkVersion 35
         multiDexEnabled true
         versionCode 1
         versionName "1.0"
