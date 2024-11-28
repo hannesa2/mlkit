@@ -54,7 +54,7 @@ android {
 
 dependencies {
     implementation project(':internal:chooserx')
-    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'com.google.mlkit:entity-extraction:16.0.0-beta5'
 
     // Optional dependency used for the Snackbar
