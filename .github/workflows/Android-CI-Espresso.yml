@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macOS-14 ]
+        os: [ ubuntu-22.04 ]
         java_version: [ 17 ]
     steps:
       - name: Checkout
@@ -71,7 +71,7 @@ jobs:
         working-directory: android
     strategy:
       matrix:
-        os: [ macOS-14 ]
+        os: [ ubuntu-22.04 ]
         java_version: [ 17 ]
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
