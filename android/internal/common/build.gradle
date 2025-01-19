@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+    namespace "com.google.mlkit.internal.common"
     compileSdkVersion 35
 
     defaultConfig {
@@ -28,7 +29,6 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-    namespace 'com.google.mlkit.common'
 }
 
 dependencies {
