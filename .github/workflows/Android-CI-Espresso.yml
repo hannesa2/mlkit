@@ -129,3 +129,9 @@ jobs:
           name: MLKit-Lint-report
           path: |
             ./**/build/reports/lint-results-debug.html
+      - name: ktLint error
+        if: ${{ failure() }}
+        run: |
+            pwd
+            ls -la mainSample/build/reports/ktlint/ktlintMainSourceSetCheck/ktlintMainSourceSetCheck.txt
+            cat mainSample/build/reports/ktlint/ktlintMainSourceSetCheck/ktlintMainSourceSetCheck.txt
