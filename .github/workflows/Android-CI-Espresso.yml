@@ -49,14 +49,12 @@ jobs:
         run: ./signing/decrypt.sh
         env:
           CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
-      - name: Build project
-        run: ./gradlew assembleDebug
-        env:
-          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
-          ALIAS_NAME: ${{ secrets.ALIAS_NAME }}
-          ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
-      - name: Run tests
-        run: ./gradlew test
+#      - name: Build project
+#        run: ./gradlew assembleDebug
+#        env:
+#          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
+#          ALIAS_NAME: ${{ secrets.ALIAS_NAME }}
+#          ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
       - name: Run instrumentation tests
         uses: hannesa2/action-android/emulator-run-cmd@0.1.16.7
         with:
@@ -87,6 +85,8 @@ jobs:
           if-no-files-found: error
           path: |
             android/mainSample/build/reports/androidTests/connected
+      - name: Run tests
+        run: ./gradlew test
       - name: cleanup keystore
         if: ${{ always() }}
         run: ./signing/cleanup.sh
