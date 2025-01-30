@@ -128,7 +128,7 @@ dependencies {
 
     // -------------------------------------------------------
 
-    implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'com.google.code.gson:gson:2.12.0'
     implementation 'com.google.guava:guava:33.4.0-android'
 
     // For how to setup gradle dependencies in Android X, see:
