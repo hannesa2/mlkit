@@ -14,12 +14,27 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-22.04 ]
+        api: [ 34 ]
+        abi: [ x86_64 ]
+        emulatorApi: [ 14 ]
+        tag: [ 'google_apis' ]
         java_version: [ 17 ]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: kvm support
+        run: |
+          egrep -c '(vmx|svm)' /proc/cpuinfo
+          id
+          sudo adduser $USER kvm
+          sudo chown -R $USER /dev/kvm
+          id
+      - name: prepare
+        run: |
+          sudo apt-get update && sudo apt-get install -y exiftool imagemagick xdg-utils libimage-exiftool-perl zsh jq xorg
+      #          brew install exiftool imagemagick
       - name: Install JDK ${{ matrix.java_version }}
         uses: actions/setup-java@v4
         with:
@@ -30,37 +45,51 @@ jobs:
         uses: hannesa2/action-android/install-sdk@0.1.16.7
       - name: Debug keystore
         run: keytool -genkey -v -keystore mainSample/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "C=US, O=Android, CN=Android Debug"
-      - name: Build project
-        run: ./gradlew assembleDebug
+      - name: Decrypt keystore
+        run: ./signing/decrypt.sh
+        env:
+          CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
+#      - name: Build project
+#        run: ./gradlew assembleDebug
+#        env:
+#          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
+#          ALIAS_NAME: ${{ secrets.ALIAS_NAME }}
+#          ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
+      - name: Run instrumentation tests
+        uses: hannesa2/action-android/emulator-run-cmd@0.1.16.7
+        with:
+          cmd: ./android/scripts/runCat.sh
+          api: ${{ matrix.api }}
+          tag: ${{ matrix.tag }}
+          abi: ${{ matrix.abi }}
+          cmdOptions: -noaudio -no-boot-anim -no-window -metrics-collection
+          disableAnimations: true
         env:
           KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
           ALIAS_NAME: ${{ secrets.ALIAS_NAME }}
           ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
+      - name: Archive screenshots
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: MLKit-Screenshots
+          if-no-files-found: error
+          path: |
+            android/mainSample/build/outputs/connected_android_test_additional_output/debugAndroidTest/connected
+            android/mainSample/build/outputs/androidTest-results/connected
+      - name: Archive Espresso results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: MLKit-Espresso-report
+          if-no-files-found: error
+          path: |
+            android/mainSample/build/reports/androidTests/connected
       - name: Run tests
         run: ./gradlew test
-      #      - name: Run instrumentation tests
-      #        uses: malinskiy/action-android/emulator-run-cmd@release/0.1.4
-      #        with:
-      #          cmd: ./gradlew cAT
-      #          api: 28
-      #          tag: default
-      #          abi: x86
-      #      - name: Archive Espresso results
-      #        uses: actions/upload-artifact@v2.2.0
-      #        with:
-      #          name: MLKit-Espresso-report
-      #          path: app/build/reports/androidTests/connected
-      #      - name: Save logcat output
-      #        uses: actions/upload-artifact@master
-      #        if: failure()
-      #        with:
-      #          name: MLKit-logcat
-      #          path: artifacts/logcat.log
-      #      - name: Archive screenshots
-      #        uses: actions/upload-artifact@v2.2.0
-      #        with:
-      #          name: MLKit-Screenshots
-      #          path: screenshots/adb
+      - name: cleanup keystore
+        if: ${{ always() }}
+        run: ./signing/cleanup.sh
   buildRelease:
     name: Build release
     runs-on: ${{ matrix.os }}
