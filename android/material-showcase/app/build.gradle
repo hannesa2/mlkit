@@ -55,7 +55,7 @@ dependencies {
     // Custom model
     implementation 'com.google.mlkit:object-detection-custom:17.0.2'
 
-    api 'com.google.guava:guava:33.4.0-android'
+    api 'com.google.guava:guava:33.4.5-android'
 }
 
 project.afterEvaluate {
