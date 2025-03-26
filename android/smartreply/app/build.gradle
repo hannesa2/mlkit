@@ -57,7 +57,7 @@ dependencies {
     // use unbundled model that depends on Google Play Services
     // implementation 'com.google.android.gms:play-services-mlkit-smart-reply:16.0.0-beta1'
 
-    implementation 'com.google.guava:guava:33.4.0-android'
+    implementation 'com.google.guava:guava:33.4.6-android'
 }
 
 project.afterEvaluate {
