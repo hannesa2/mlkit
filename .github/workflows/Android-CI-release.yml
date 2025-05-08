@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    name: Publish release ${{ github.ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Find Tag
+        id: tagger
+        uses: jimschubert/query-tag-action@v2
+        with:
+          skip-unshallow: 'true'
+          abbrev: false
+          commit-ish: HEAD
+      - name: Install JDK ${{ matrix.java_version }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: "adopt"
+          java-version: 17
+      - name: Install Android SDK
+        uses: hannesa2/action-android/install-sdk@0.1.16.7
+      - name: Decrypt keystore
+        run: cd android && ./signing/decrypt.sh
+        env:
+          TAG_VERSION: ${{steps.tagger.outputs.tag}}
+          CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
+      - name: Build project
+        run: cd android && ./gradlew clean assembleRelease
+        env:
+          TAG_VERSION: ${{steps.tagger.outputs.tag}}
+          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
+          ALIAS_NAME: ${{ secrets.ALIAS_NAME }}
+          ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
+      - name: cleanup keystore
+        run: cd android && ./signing/cleanup.sh
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{steps.tagger.outputs.tag}}
+          generate_release_notes: true
+          prerelease: false
+          name: ${{steps.tagger.outputs.tag}}
+          files: |
+            ./android/mainSample/build/outputs/apk/release/*-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,13 +1,16 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
 
 android {
-    compileSdkVersion 34
+    namespace "com.google.mlkit.vision.automl.demo"
+    compileSdkVersion 35
 
     defaultConfig {
-        applicationId "com.google.mlkit.vision.automl.demo"
         minSdkVersion 21
         multiDexEnabled true
-        targetSdkVersion 34
+        targetSdkVersion 35
         // Version code for next release (version 9 is now in Play Store)
         versionCode 11
         versionName "1.11"
@@ -18,7 +21,6 @@ android {
         proguard {
             debuggable false
             minifyEnabled true
-            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard.cfg'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro', 'proguard.cfg'
         }
@@ -33,19 +35,13 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
     // Do NOT compress tflite model files (need to call out to developers!)
     aaptOptions {
         noCompress "tflite"
     }
-
-    dexOptions {
-        incremental true
-        javaMaxHeapSize "4g"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
@@ -55,6 +51,7 @@ repositories {
 }
 
 dependencies {
+    implementation project (':internal:common')
     // Image labeling with AutoML model support
     implementation 'com.google.mlkit:image-labeling-custom:17.0.3'
     // Or comment the dependency above and uncomment the dependency below to
@@ -67,25 +64,35 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     // -------------------------------------------------------
 
-    implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.google.guava:guava:27.1-android'
+    implementation 'com.google.code.gson:gson:2.13.1'
+    implementation 'com.google.guava:guava:33.4.8-android'
 
     // ViewModel and LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata:2.3.1"
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.3.1"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.8.7"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.7"
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.annotation:annotation:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.annotation:annotation:1.9.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
 
     // CameraX
-    implementation "androidx.camera:camera-camera2:1.0.0-SNAPSHOT"
-    implementation "androidx.camera:camera-lifecycle:1.0.0-SNAPSHOT"
-    implementation "androidx.camera:camera-view:1.0.0-SNAPSHOT"
+    implementation "androidx.camera:camera-camera2:${camerax_version}"
+    implementation "androidx.camera:camera-lifecycle:${camerax_version}"
+    implementation "androidx.camera:camera-view:1.4.2"
 }
 
 configurations {
     // Resolves dependency conflict caused by some dependencies use
     // com.google.guava:guava and com.google.guava:listenablefuture together.
     all*.exclude group: 'com.google.guava', module: 'listenablefuture'
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            afterEvaluate {
+                from components.findByName('release')
+            }
+        }
+    }
 }

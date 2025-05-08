@@ -1,14 +1,33 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 35
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 35
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    namespace 'com.mlkit.lintchecks'
 }
 
 dependencies {
     lintChecks project(":internal:lint")
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            afterEvaluate {
+                from components.findByName('release')
+            }
+        }
+    }
 }

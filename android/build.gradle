@@ -1,0 +1,70 @@
+import com.github.benmanes.gradle.versions.VersionsPlugin
+import org.gradle.internal.jvm.Jvm
+
+buildscript {
+    ext.kotlin_version = '2.1.20'
+    repositories {
+        google()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.9.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.android.gms:strict-version-matcher-plugin:1.2.4'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.52.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.google.gms:google-services:4.4.2'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:3.0.3'
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:11.0.0"
+    }
+}
+
+plugins {
+    id 'com.github.ben-manes.versions' version '0.52.0'
+}
+
+println "Gradle uses Java ${Jvm.current()}"
+
+ext {
+    camerax_version = "1.4.2"
+}
+
+allprojects {
+    apply plugin: VersionsPlugin
+
+    repositories {
+        google()
+        mavenCentral()
+        mavenLocal()
+        maven { url 'https://jitpack.io' }
+        // Depending on AndroidX Snapshot Builds to get the latest CameraX libs.
+        maven { url 'https://androidx.dev/snapshots/builds/6787662/artifacts/repository/' }
+    }
+
+    // See: https://github.com/ben-manes/gradle-versions-plugin
+    dependencyUpdates.resolutionStrategy = {
+        componentSelection { rules ->
+            rules.all { selection ->
+                boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm'].any { qualifier ->
+                    selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+                }
+                if (rejected) {
+                    selection.reject('Release candidate')
+                }
+            }
+        }
+    }
+}
+
+subprojects {
+    apply plugin: "org.jlleitschuh.gradle.ktlint"
+
+    // Optionally configure plugin
+    ktlint {
+        debug = false
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
