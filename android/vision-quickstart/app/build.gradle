@@ -134,11 +134,11 @@ dependencies {
     // For how to setup gradle dependencies in Android X, see:
     // https://developer.android.com/training/testing/set-up-project#gradle-dependencies
     // Core library
-    androidTestImplementation 'androidx.test:core:1.6.1'
+    androidTestImplementation 'androidx.test:core:1.7.0'
 
     // AndroidJUnitRunner and JUnit Rules
     androidTestImplementation 'androidx.test:runner:1.6.2'
-    androidTestImplementation 'androidx.test:rules:1.6.1'
+    androidTestImplementation 'androidx.test:rules:1.7.0'
 
     // Assertions
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
