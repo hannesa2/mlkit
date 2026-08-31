@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.google.mlkit.md"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 35
 
         versionCode getGitCommitCount()

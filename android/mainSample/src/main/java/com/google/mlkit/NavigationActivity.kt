@@ -15,11 +15,12 @@ import com.google.android.material.navigation.NavigationView
 import com.google.mlkit.md.MainActivity
 import com.google.mlkit.samples.codescanner.kotlin.CodeScannerActivity
 import com.google.mlkit.samples.documentscanner.kotlin.DocumentScannerActivity
-import com.google.mlkit.samples.vision.digitalink.kotlin.DigitalInkMainActivity
+import com.google.mlkit.samples.vision.digitalink.recognition.kotlin.DigitalInkMainActivity
 import com.google.mlkit.vision.automl.demo.ChooserActivity
 import com.google.mlkit.vision.demo.EntryChoiceActivity
 import info.hannes.github.AppUpdateHelper
 import info.hannes.logcat.ui.LogcatActivity
+import kotlin.jvm.java
 
 abstract class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     override fun onPostCreate(savedInstanceState: Bundle?) {

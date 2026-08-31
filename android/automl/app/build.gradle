@@ -8,7 +8,7 @@ android {
     compileSdkVersion 35
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 26
         multiDexEnabled true
         targetSdkVersion 35
         // Version code for next release (version 9 is now in Play Store)

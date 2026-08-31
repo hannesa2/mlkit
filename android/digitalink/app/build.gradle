@@ -1,13 +1,12 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'maven-publish'
 
 android {
     namespace "com.google.mlkit.samples.vision.digitalink.recognition"
     compileSdkVersion 35
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 26
         targetSdkVersion 35
         multiDexEnabled true
         versionCode 1
