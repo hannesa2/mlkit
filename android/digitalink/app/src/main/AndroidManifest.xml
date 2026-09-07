@@ -11,7 +11,7 @@
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
 
         <activity
-            android:name="com.google.mlkit.samples.vision.digitalink.recognition.DigitalInkMainActivity"
+            android:name=".kotlin.DigitalInkMainActivity"
             android:label="@string/title_activity_main"
             android:exported="true"
             android:screenOrientation="portrait">
