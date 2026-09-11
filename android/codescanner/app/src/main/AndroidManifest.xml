@@ -18,25 +18,18 @@
         android:value="@integer/google_play_services_version" />
 
     <meta-data
+        tools:replace="android:value"
         android:name="com.google.mlkit.vision.DEPENDENCIES"
         android:value="barcode_ui"/>
 
     <activity
-        android:name=".EntryChoiceActivity"
+        android:name=".kotlin.CodeScannerActivity"
         android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-
-    <activity
-        android:name=".java.MainActivity"
-        android:exported="false" />
-
-    <activity
-        android:name=".kotlin.MainActivity"
-        android:exported="false" />
 
   </application>
 </manifest>

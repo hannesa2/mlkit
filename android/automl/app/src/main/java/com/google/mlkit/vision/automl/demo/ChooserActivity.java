@@ -77,17 +77,17 @@ public final class ChooserActivity extends AppCompatActivity
   @Override
   protected void onCreate(Bundle savedInstanceState) {
 
-    if (BuildConfig.DEBUG) {
-      StrictMode.setThreadPolicy(
-          new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
-      StrictMode.setVmPolicy(
-          new StrictMode.VmPolicy.Builder()
-              .detectLeakedSqlLiteObjects()
-              .detectLeakedClosableObjects()
-              .penaltyLog()
-              .penaltyDeath()
-              .build());
-    }
+//    if (BuildConfig.DEBUG) {
+//      StrictMode.setThreadPolicy(
+//          new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
+//      StrictMode.setVmPolicy(
+//          new StrictMode.VmPolicy.Builder()
+//              .detectLeakedSqlLiteObjects()
+//              .detectLeakedClosableObjects()
+//              .penaltyLog()
+//              .penaltyDeath()
+//              .build());
+//    }
     super.onCreate(savedInstanceState);
     Log.d(TAG, "onCreate");
 
