@@ -16,6 +16,7 @@
 
 package com.google.mlkit.vision.demo.kotlin
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build.VERSION_CODES
@@ -91,6 +92,7 @@ class CameraXSourceDemoActivity : AppCompatActivity(), CompoundButton.OnCheckedC
     createThenStartCameraXSource()
   }
 
+  @SuppressLint("MissingPermission")
   public override fun onResume() {
     super.onResume()
     if (cameraXSource != null &&
@@ -121,6 +123,7 @@ class CameraXSourceDemoActivity : AppCompatActivity(), CompoundButton.OnCheckedC
     }
   }
 
+  @SuppressLint("MissingPermission")
   private fun createThenStartCameraXSource() {
     if (cameraXSource != null) {
       cameraXSource!!.close()
@@ -131,14 +134,14 @@ class CameraXSourceDemoActivity : AppCompatActivity(), CompoundButton.OnCheckedC
         localModel
       )
     val objectDetector: ObjectDetector = ObjectDetection.getClient(customObjectDetectorOptions!!)
-    var detectionTaskCallback: DetectionTaskCallback<List<DetectedObject>> =
+    val detectionTaskCallback: DetectionTaskCallback<List<DetectedObject>> =
       DetectionTaskCallback<List<DetectedObject>> { detectionTask ->
         detectionTask
           .addOnSuccessListener { results -> onDetectionTaskSuccess(results) }
           .addOnFailureListener { e -> onDetectionTaskFailure(e) }
       }
     val builder: CameraSourceConfig.Builder =
-      CameraSourceConfig.Builder(getApplicationContext(), objectDetector!!, detectionTaskCallback)
+      CameraSourceConfig.Builder(getApplicationContext(), objectDetector, detectionTaskCallback)
         .setFacing(lensFacing)
     targetResolution =
       PreferenceUtils.getCameraXTargetResolution(getApplicationContext(), lensFacing)
@@ -196,8 +199,8 @@ class CameraXSourceDemoActivity : AppCompatActivity(), CompoundButton.OnCheckedC
   }
 
   private val isPortraitMode: Boolean
-    private get() =
-      (getApplicationContext().getResources().getConfiguration().orientation !==
+    get() =
+      (applicationContext.getResources().getConfiguration().orientation !==
         Configuration.ORIENTATION_LANDSCAPE)
 
   companion object {

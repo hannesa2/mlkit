@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.google.mlkit.samples.documentscanner">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
   <application
       android:icon="@drawable/logo_mlkit"
@@ -18,7 +16,7 @@
         android:value="document_ui"/>
 
     <activity
-        android:name=".EntryChoiceActivity"
+        android:name=".kotlin.DocumentScannerActivity"
         android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -26,22 +24,11 @@
       </intent-filter>
     </activity>
 
-    <activity
-        android:name=".java.MainActivity"
-        android:exported="false" />
-
-    <activity
-        android:name=".kotlin.MainActivity"
-        android:exported="false" />
-
     <provider
         android:name="androidx.core.content.FileProvider"
         android:authorities="${applicationId}.provider"
         android:exported="false"
         android:grantUriPermissions="true">
-        <meta-data
-            android:name="android.support.FILE_PROVIDER_PATHS"
-            android:resource="@xml/file_paths" />
     </provider>
 
   </application>

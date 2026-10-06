@@ -17,6 +17,7 @@
 package com.mlkit.lint
 
 import com.android.tools.lint.checks.infrastructure.LintDetectorTest.java
+import com.android.tools.lint.checks.infrastructure.LintDetectorTest.kotlin
 import com.android.tools.lint.checks.infrastructure.TestLintTask.lint
 import com.mlkit.lint.InvalidImportDetector.Companion.SHORT_MESSAGE
 import org.junit.Test
@@ -31,16 +32,37 @@ class InvalidImportDetectorTest {
         }
       }""").indented()
 
+    private val kotlinPackage = kotlin("""
+      package com.google.mlkit.kotlin;
+
+        class Hello {
+            class drawable
+      }""").indented()
+
     @Test
-    fun normalRImport() {
+    fun normalRImportJ() {
         lint()
                 .files(javaPackage, java("""
-          package com.google.mlkit.kotlin;
+          package com.google.mlkit.java;
 
-          import com.google.mlkit.Hello;
+          import com.google.mlkit.java.Hello;
 
           class Example {
           }""").indented())
+                .issues(ISSUE_INVALID_IMPORT)
+                .run()
+                .expectClean()
+    }
+
+    @Test
+    fun normalRImportK() {
+        lint()
+                .files(kotlinPackage, kotlin("""
+          package com.google.mlkit.kotlin;
+
+          import com.google.mlkit.kotlin.Hello;
+
+          class Example""").indented())
                 .issues(ISSUE_INVALID_IMPORT)
                 .run()
                 .expectClean()

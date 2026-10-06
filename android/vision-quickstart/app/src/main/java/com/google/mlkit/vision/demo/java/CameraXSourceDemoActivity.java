@@ -16,6 +16,7 @@
 
 package com.google.mlkit.vision.demo.java;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build.VERSION_CODES;
@@ -112,6 +113,7 @@ public final class CameraXSourceDemoActivity extends AppCompatActivity
     createThenStartCameraXSource();
   }
 
+  @SuppressLint("MissingPermission")
   @Override
   public void onResume() {
     super.onResume();
@@ -144,6 +146,7 @@ public final class CameraXSourceDemoActivity extends AppCompatActivity
     }
   }
 
+  @SuppressLint("MissingPermission")
   private void createThenStartCameraXSource() {
     if (cameraXSource != null) {
       cameraXSource.close();

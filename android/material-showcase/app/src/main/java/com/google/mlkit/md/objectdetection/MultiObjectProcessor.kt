@@ -17,11 +17,11 @@
 package com.google.mlkit.md.objectdetection
 
 import android.graphics.PointF
+import android.os.Build
 import android.util.Log
 import android.util.SparseArray
 import androidx.annotation.MainThread
 import androidx.core.util.forEach
-import androidx.core.util.set
 import com.google.android.gms.tasks.Task
 import com.google.mlkit.md.camera.CameraReticleAnimator
 import com.google.mlkit.md.camera.GraphicOverlay
@@ -145,7 +145,10 @@ class MultiObjectProcessor(
                 val objectDotAnimator = objectDotAnimatorArray.get(trackingId) ?: let {
                     ObjectDotAnimator(graphicOverlay).apply {
                         start()
-                        objectDotAnimatorArray[trackingId] = this
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+                            objectDotAnimatorArray[trackingId] = this
+                        else
+                            objectDotAnimatorArray.put(trackingId, this)
                     }
                 }
                 graphicOverlay.add(

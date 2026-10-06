@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/grp1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_material_showcase"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Material showcase" />
+        <item
+            android:id="@+id/nav_codescanner"
+            android:icon="@drawable/ic_camera_mixed_processing"
+            android:title="Code Scanner" />
+        <item
+            android:id="@+id/nav_documentscanner"
+            android:icon="@drawable/ic_camera_mixed_processing"
+            android:title="Document Scanner" />
+        <item
+            android:id="@+id/nav_vision_quickstart"
+            android:icon="@drawable/ic_camera_mixed_processing"
+            android:title="Vision quickstart" />
+        <item
+            android:id="@+id/nav_translate_showcase"
+            android:icon="@drawable/ic_camera_iris"
+            android:title="Translate showcase" />
+        <item
+            android:id="@+id/nav_translate"
+            android:icon="@drawable/ic_tag_faces"
+            android:title="Translate" />
+        <item
+            android:id="@+id/nav_smart_replay"
+            android:icon="@drawable/ic_github_face"
+            android:title="Smart replay" />
+        <item
+            android:id="@+id/nav_langid"
+            android:icon="@drawable/ic_image_filter_black_white"
+            android:title="LanguageID" />
+        <item
+            android:id="@+id/nav_entityextraction"
+            android:icon="@drawable/ic_image_filter_black_white"
+            android:title="Entity Extraction" />
+        <item
+            android:id="@+id/nav_auto_ml"
+            android:icon="@drawable/ic_palette"
+            android:title="Auto ML" />
+        <item
+            android:id="@+id/nav_digital_ink"
+            android:icon="@drawable/ic_palette"
+            android:title="Digital Ink" />
+    </group>
+
+</menu>

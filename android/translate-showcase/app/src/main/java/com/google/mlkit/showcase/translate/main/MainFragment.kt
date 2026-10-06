@@ -25,6 +25,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.SurfaceHolder
+import android.view.SurfaceHolder.Callback
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -41,9 +42,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.google.mlkit.showcase.translate.R
 import com.google.mlkit.showcase.translate.analyzer.TextAnalyzer
+import com.google.mlkit.showcase.translate.databinding.MainTranslateshowcaseFragmentBinding
 import com.google.mlkit.showcase.translate.util.Language
 import com.google.mlkit.showcase.translate.util.ScopedExecutor
-import kotlinx.android.synthetic.main.main_fragment.*
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -87,11 +88,12 @@ class MainFragment : Fragment() {
     /** UI callbacks are run on this executor. */
     private lateinit var scopedExecutor: ScopedExecutor
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+    private var _binding: MainTranslateshowcaseFragmentBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = MainTranslateshowcaseFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onDestroyView() {
@@ -100,6 +102,7 @@ class MainFragment : Fragment() {
         // Shut down the scoped executor. The camera executor will automatically shut down its
         // background threads after 60s of idling.
         scopedExecutor.shutdown()
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -135,9 +138,9 @@ class MainFragment : Fragment() {
             android.R.layout.simple_spinner_dropdown_item, viewModel.availableLanguages
         )
 
-        targetLangSelector.adapter = adapter
-        targetLangSelector.setSelection(adapter.getPosition(Language("en")))
-        targetLangSelector.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.targetLangSelector.adapter = adapter
+        binding.targetLangSelector.setSelection(adapter.getPosition(Language("en")))
+        binding.targetLangSelector.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
                 view: View?,
@@ -150,47 +153,39 @@ class MainFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
-        viewModel.sourceLang.observe(viewLifecycleOwner, Observer { srcLang.text = it.displayName })
+        viewModel.sourceLang.observe(viewLifecycleOwner, Observer { binding.srcLang.text = it.displayName })
         viewModel.translatedText.observe(viewLifecycleOwner, Observer { resultOrError ->
             resultOrError?.let {
                 if (it.error != null) {
-                    translatedText.error = resultOrError.error?.localizedMessage
+                    binding.translatedText.error = resultOrError.error?.localizedMessage
                 } else {
-                    translatedText.text = resultOrError.result
+                    binding.translatedText.text = resultOrError.result
                 }
             }
         })
         viewModel.modelDownloading.observe(viewLifecycleOwner, Observer { isDownloading ->
-            progressBar.visibility = if (isDownloading) {
+            binding.progressBar.visibility = if (isDownloading) {
                 View.VISIBLE
             } else {
                 View.INVISIBLE
             }
-            progressText.visibility = progressBar.visibility
+            binding.progressText.visibility = binding.progressBar.visibility
         })
 
-        overlay.apply {
+        binding.overlay.apply {
             setZOrderOnTop(true)
             holder.setFormat(PixelFormat.TRANSPARENT)
-            holder.addCallback(object : SurfaceHolder.Callback {
-                override fun surfaceChanged(
-                    holder: SurfaceHolder,
-                    format: Int,
-                    width: Int,
-                    height: Int
-                ) {
-                }
+            holder.addCallback(object : Callback {
+                override fun surfaceChanged(holder: SurfaceHolder, p1: Int, p2: Int, p3: Int) = Unit
 
-                override fun surfaceDestroyed(holder: SurfaceHolder) {}
+                override fun surfaceDestroyed(holder: SurfaceHolder) = Unit
 
                 override fun surfaceCreated(holder: SurfaceHolder) {
-                    holder?.let {
-                        drawOverlay(
-                            it,
-                            DESIRED_HEIGHT_CROP_PERCENT,
-                            DESIRED_WIDTH_CROP_PERCENT
-                        )
-                    }
+                    drawOverlay(
+                        holder,
+                        DESIRED_HEIGHT_CROP_PERCENT,
+                        DESIRED_WIDTH_CROP_PERCENT
+                    )
                 }
             })
         }
@@ -244,9 +239,9 @@ class MainFragment : Fragment() {
                     )
                 )
             }
-        viewModel.sourceText.observe(viewLifecycleOwner, Observer { srcText.text = it })
+        viewModel.sourceText.observe(viewLifecycleOwner, Observer { binding.srcText.text = it })
         viewModel.imageCropPercentages.observe(viewLifecycleOwner,
-            Observer { drawOverlay(overlay.holder, it.first, it.second) })
+            Observer { drawOverlay(binding.overlay.holder, it.first, it.second) })
 
         // Select back camera since text detection does not work with front camera
         val cameraSelector =
